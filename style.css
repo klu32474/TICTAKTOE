@@ -1,0 +1,221 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://wallpapercave.com/wp/wp8984808.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 20px 0;
+    overflow: hidden;
+    animation: backgroundAnimation 10s infinite alternate ease-in-out;
+}
+
+@keyframes backgroundAnimation {
+    0% {
+        background-position: center;
+    }
+    100% {
+        background-position: bottom;
+    }
+}
+
+h1.home-page-title {
+    font-size: 5em;
+    color: #97c23279;
+    margin-bottom: 20px;
+    transition: transform 0.3s, color 0.3s;
+    text-shadow: 2px 2px 8px rgb(235, 62, 62);
+    animation: titleAnimation 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleAnimation {
+    from {
+        transform: scale(1);
+        color: #d8445a;
+    }
+    to {
+        transform: scale(1.1);
+        color: #e06b74;
+    }
+}
+
+.home-page, .game-container {
+    text-align: center;
+    transition: opacity 0.5s, transform 0.5s;
+}
+
+.home-page {
+    transform: scale(1);
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: scale(1);
+    opacity: 0;
+    height: 100%;
+    animation: containerFadeIn 1s forwards;
+}
+
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.choose-marker, .choose-difficulty {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    background: linear-gradient(135deg, #295cb9, #081726);
+    animation: boxAnimation 1s infinite alternate ease-in-out;
+}
+
+@keyframes boxAnimation {
+    from {
+        transform: scale(1);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    to {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.choose-marker p, .choose-difficulty p {
+    font-size: 1.5em;
+    color: #ec6262;
+    margin-bottom: 20px;
+    font-weight: bold;
+    transition: color 0.3s;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.winner-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(1, 67, 10, 0.8);
+    color: rgb(228, 29, 29);
+    font-size: 3em;
+    padding: 20px 40px;
+    border-radius: 10px;
+    text-align: center;
+    display: none; /* Initially hidden */
+    z-index: 10;
+    animation: winnerAnimation 1s ease-in-out;
+}
+
+@keyframes winnerAnimation {
+    from {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.marker-button, .difficulty-button, #restartButton, #goBackButton {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin: 10px;
+    background: linear-gradient(to right, #ff6b81, #ff4757);
+    border: none;
+    border-radius: 10px;
+    color: rgb(191, 63, 216);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    animation: buttonAnimation 1.5s infinite alternate;
+}
+
+@keyframes buttonAnimation {
+    from {
+        transform: translateY(0);
+        box-shadow: 0 5px 15px rgba(199, 29, 58, 0.5);
+    }
+    to {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(65, 141, 7, 0.7);
+    }
+}
+
+.marker-button:hover, .difficulty-button:hover, #restartButton:hover, #goBackButton:hover {
+    background: linear-gradient(to right, #ff4757, #ff6b81);
+    transform: scale(1.15);
+}
+
+.game-board {
+    display: grid;
+    gap: 15px;
+    margin: 20px auto;
+    justify-content: center;
+    transition: opacity 1s;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top right, #dfe4ea, #70a1ff);
+    border-radius: 10px;
+    font-size: 3em;
+    font-weight: bold;
+    color: #1a53cf;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, opacity 0.5s;
+    opacity: 0;
+    animation: cellFadeIn 0.5s forwards ease-in-out;
+}
+
+@keyframes cellFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.cell:hover {
+    background: linear-gradient(to top right, #380404, #70a1ff);
+    transform: scale(1.1);
+}
+
+.cell.clicked {
+    transform: scale(1.2);
+}
+
+.cell.visible {
+    opacity: 1;
+}
+
+h2 {
+    color: #0d5825;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+    animation: h2Animation 2s infinite alternate;
+}
+
+@keyframes h2Animation {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-5px);
+    }
+}
